@@ -19,6 +19,16 @@ export const BARBERS: Barber[] = [
     img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=400&fit=crop&auto=format",
   },
   {
+    id: 1,
+    name: "Kriti Tamang",
+    title: "Master Barber",
+    rating: 4.9,
+    reviews: 312,
+    experience: "1 years",
+    specialties: ["Fade", "Line-up", "Beard sculpt"],
+    img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=400&fit=crop&auto=format",
+  },
+  {
     id: 2,
     name: "Prabal Lamichhine",
     title: "Senior Barber",

@@ -5,6 +5,7 @@ import { Calendar, ChevronDown, Clock, LayoutDashboard, Scissors, Settings, Tren
 import { Badge, StarRating } from "./SharedUI";
 import type { AdminAppointment, Barber, Service } from "./types";
 
+import Appointment from "./adminComponents/Appointment";
 import Services from "./adminComponents/Services";
 import Overview from "./adminComponents/Overview";
 import Barbers from "./adminComponents/Barbers";
@@ -90,77 +91,7 @@ export function AdminDashboard({ appointments, barbers, services }: AdminDashboa
         )}
 
         {activeTab === "appointments" && (
-          <div>
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <h1
-                  className="text-2xl font-bold text-[#f5f0e8]"
-                  style={{ fontFamily: "Playfair Display, serif" }}
-                >
-                  Appointments
-                </h1>
-                <p className="text-[#8a8578] text-sm mt-1">Manage and update booking status</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[#8a8578] text-sm">Today</span>
-                <ChevronDown size={14} className="text-[#8a8578]" />
-              </div>
-            </div>
-
-            <div className="bg-[#161616] border border-[#c9a227]/10 rounded-2xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-[#232323]">
-                      {["ID", "Client", "Barber", "Service", "Time", "Status", "Action"].map((h) => (
-                        <th
-                          key={h}
-                          className="px-4 py-3 text-left text-xs font-medium text-[#8a8578] uppercase tracking-wider"
-                          style={{ fontFamily: "DM Mono, monospace" }}
-                        >
-                          {h}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {appointments.map((appt) => (
-                      <tr
-                        key={appt.id}
-                        className="border-b border-[#1e1e1e] hover:bg-[#1a1a1a] transition-colors"
-                      >
-                        <td className="px-4 py-3.5">
-                          <span
-                            className="text-[#c9a227] text-xs font-medium"
-                            style={{ fontFamily: "DM Mono, monospace" }}
-                          >
-                            {appt.id}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3.5 text-[#f5f0e8] text-sm">{appt.client}</td>
-                        <td className="px-4 py-3.5 text-[#8a8578] text-sm">{appt.barber}</td>
-                        <td className="px-4 py-3.5 text-[#8a8578] text-sm">{appt.service}</td>
-                        <td className="px-4 py-3.5 text-[#8a8578] text-sm font-mono">{appt.time}</td>
-                        <td className="px-4 py-3.5">{statusBadge(statuses[appt.id])}</td>
-                        <td className="px-4 py-3.5">
-                          <select
-                            value={statuses[appt.id]}
-                            onChange={(e) => setStatuses({ ...statuses, [appt.id]: e.target.value })}
-                            className="bg-[#232323] border border-[#c9a227]/15 text-[#f5f0e8] text-xs rounded-lg px-2 py-1.5 outline-none focus:border-[#c9a227]/40"
-                          >
-                            <option value="pending">Pending</option>
-                            <option value="confirmed">Confirmed</option>
-                            <option value="completed">Completed</option>
-                            <option value="cancelled">Cancelled</option>
-                          </select>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+          <Appointment appointments={appointments} statuses={statuses} setStatuses={setStatuses}/>
         )}
 
         {activeTab === "services" && (

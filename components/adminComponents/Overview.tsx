@@ -107,11 +107,11 @@ const Overview = ({ appointments, barbers, statuses }: OverviewProps) => {
                         Barber Workload Today
                     </h3>
                     <div className="space-y-5">
-                        {barbers.map((b) => {
+                        {barbers.map((b, idx) => {
                             const count = appointments.filter((a) => a.barber === b.name).length;
                             const pct = Math.round((count / 6) * 100);
                             return (
-                                <div key={b.id}>
+                                <div key={idx}>
                                     <div className="flex items-center justify-between mb-2">
                                         <div className="flex items-center gap-2.5">
                                             <img

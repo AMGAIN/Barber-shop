@@ -156,9 +156,9 @@ export function HomePage({ barbers, services, testimonials, galleryImgs }: HomeP
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {barbers.map((barber) => (
+            {barbers.map((barber, idx) => (
               <div
-                key={barber.id}
+                key={idx}
                 className="bg-[#161616] rounded-2xl overflow-hidden border border-[#c9a227]/10 hover:border-[#c9a227]/30 transition-all duration-300 group"
               >
                 <div className="relative h-64 bg-[#1a1a1a] overflow-hidden">

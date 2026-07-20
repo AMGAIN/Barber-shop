@@ -106,9 +106,9 @@ export function BookingPage({ barbers, services, timeSlots, bookedSlots }: Booki
               Choose Your Barber
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {barbers.map((barber) => (
+              {barbers.map((barber, idx) => (
                 <button
-                  key={barber.id}
+                  key={idx}
                   onClick={() => {
                     setBooking({ ...booking, barber });
                     setStep(2);
